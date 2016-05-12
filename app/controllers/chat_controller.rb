@@ -15,12 +15,12 @@ class ChatController < ApplicationController
   before_action :authenticate_user!
   @tokens = {}
   @guest_counter = 0
-  
+
   Thread.new {
     socket = TCPSocket.new(get_setting("IRCHostname"), get_setting("IRCPort"))
     users = {}
     channels = []
-    
+
     socket.puts("PASS #{get_setting("IRCPass")} TS 6 :#{get_setting("IRCServerID")}")
     socket.puts("CAPAB QS ENCAP SERVICES");
     socket.puts("SERVER #{get_setting("IRCServerName")} 1 #{get_setting("IRCServerID")} :#{get_setting("IRCPass")}")
@@ -81,7 +81,7 @@ class ChatController < ApplicationController
           else
             socket.puts(":#{get_setting("IRCServerID") + "AAAAAA"} JOIN #{Time.new.to_i} #{channel} #{message[4]}")
             socket.puts(":#{get_setting("IRCServerID")} TMODE #{Time.new.to_i} #{channel} +m");
-            socket.puts(":#{get_setting("IRCServerID")} TMODE #{Time.new.to_i} #{channel} +ov #{get_setting("IRCServerID") + "AAAAAA"}") 
+            socket.puts(":#{get_setting("IRCServerID")} TMODE #{Time.new.to_i} #{channel} +ov #{get_setting("IRCServerID") + "AAAAAA"}")
             channels.push(channel);
           end
         end
@@ -112,12 +112,9 @@ class ChatController < ApplicationController
   }
 
   def index
-  end
-
-  def new_token
     @tokens.delete_if { |key, value| value == current_user }
     id = SecureRandom.hex(8)
     @tokens[id] = current_user
-    return id 
+    @token = id
   end
 end

@@ -13,14 +13,15 @@ end
 
 class ChatController < ApplicationController
   before_action :authenticate_user!
-  @tokens = {}
+  attr_accessor :tokens
   @guest_counter = 0
 
   Thread.new {
     socket = TCPSocket.new(get_setting("IRCHostname"), get_setting("IRCPort"))
     users = {}
     channels = []
-
+    @tokens = {}
+    
     socket.puts("PASS #{get_setting("IRCPass")} TS 6 :#{get_setting("IRCServerID")}")
     socket.puts("CAPAB QS ENCAP SERVICES");
     socket.puts("SERVER #{get_setting("IRCServerName")} 1 #{get_setting("IRCServerID")} :#{get_setting("IRCPass")}")

@@ -21,7 +21,7 @@ class ChatController < ApplicationController
     channels = []
     @tokens = {}
     @guest_counter = 0
-    
+
     socket.puts("PASS #{get_setting("IRCPass")} TS 6 :#{get_setting("IRCServerID")}")
     socket.puts("CAPAB QS ENCAP SERVICES");
     socket.puts("SERVER #{get_setting("IRCServerName")} 1 #{get_setting("IRCServerID")} :#{get_setting("IRCPass")}")
@@ -108,6 +108,8 @@ class ChatController < ApplicationController
         else
           socket.puts(":#{get_setting("IRCServerID") + "AAAAAA"} PRIVMSG #{id} :Invalid token.")
         end
+      else
+        puts message.join(" ")
       end
     end
   }

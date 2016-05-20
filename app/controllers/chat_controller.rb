@@ -26,13 +26,13 @@ class ChatController < ApplicationController
     socket.puts("CAPAB QS ENCAP SERVICES");
     socket.puts("SERVER #{get_setting("IRCServerName")} 1 #{get_setting("IRCServerID")} :#{get_setting("IRCPass")}")
     socket.puts("SVINFO 6 6 0 #{Time.now.to_i}")
-    socket.puts(":#{get_setting("IRCServerID")} UID Community 1 #{Time.now.to_i} +o qpixel qpixel 0 #{get_setting("IRCServerID") + "AAAAAA"} :Robot")
+    socket.puts(":#{get_setting("IRCServerID")} UID Community 1 #{Time.now.to_i} +ob qpixel qpixel 0 #{get_setting("IRCServerID") + "AAAAAA"} :Robot")
 
     while message = socket.gets().split(" ")
       if message[0] == "PING"
         socket.puts("PONG :#{get_setting("IRCServerID")} #{message[1]}")
       elsif message[1] == "UID"
-        message.pop() if(message[-1][0] = ":")
+        message = message.slice!(0..message[1..-1].find_index { |e| e[0] == ':' })
         users[message[-1]] = IRCUser.new()
         users[message[-1]].just_changed = true
         socket.puts(":#{get_setting("IRCServerID")} SVSNICK #{message[-1]} Guest#{@guest_counter} #{Time.now.to_i}")
@@ -94,19 +94,21 @@ class ChatController < ApplicationController
           socket.puts(":#{get_setting("IRCServerID")} TMODE #{Time.new.to_i} #{channel} +v #{id}")
         end
       elsif message[1] == "PRIVMSG"
-        id = message[0][1..-1];
-        login = message[-1][1..-1];
-        if @tokens.key?(login)
-          ident = @tokens[login]
-          users[id].has_authenticated = true
-          if ident.is_moderator || ident.is_admin
-            users[id].is_op = true
+        if(message[2] == get_setting("IRCServerID") + "AAAAAA")
+          id = message[0][1..-1];
+          login = message[-1][1..-1];
+          if @tokens.key?(login)
+            ident = @tokens[login]
+            users[id].has_authenticated = true
+            if ident.is_moderator || ident.is_admin
+              users[id].is_op = true
+            end
+            socket.puts(":#{get_setting("IRCServerID")} SVSNICK #{message[-1]} #{ident.username} #{Time.now.to_i}")
+            socket.puts(":#{get_setting("IRCServerID") + "AAAAAA"} PRIVMSG #{id} :Authenticated. Welcome!")
+            @tokens.delete(login)
+          else
+            socket.puts(":#{get_setting("IRCServerID") + "AAAAAA"} PRIVMSG #{id} :Invalid token.")
           end
-          socket.puts(":#{get_setting("IRCServerID")} SVSNICK #{message[-1]} #{ident.username} #{Time.now.to_i}")
-          socket.puts(":#{get_setting("IRCServerID") + "AAAAAA"} PRIVMSG #{id} :Authenticated. Welcome!")
-          @tokens.delete(login)
-        else
-          socket.puts(":#{get_setting("IRCServerID") + "AAAAAA"} PRIVMSG #{id} :Invalid token.")
         end
       else
         puts message.join(" ")

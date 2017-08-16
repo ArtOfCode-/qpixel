@@ -13,6 +13,9 @@
 
 ActiveRecord::Schema.define(version: 20160621174102) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "answers", force: :cascade do |t|
     t.string   "body"
     t.integer  "score"
@@ -24,8 +27,8 @@ ActiveRecord::Schema.define(version: 20160621174102) do
     t.datetime "deleted_at"
   end
 
-  add_index "answers", ["question_id"], name: "index_answers_on_question_id"
-  add_index "answers", ["user_id"], name: "index_answers_on_user_id"
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
+  add_index "answers", ["user_id"], name: "index_answers_on_user_id", using: :btree
 
   create_table "comments", force: :cascade do |t|
     t.datetime "created_at",                 null: false
@@ -37,8 +40,8 @@ ActiveRecord::Schema.define(version: 20160621174102) do
     t.integer  "user_id"
   end
 
-  add_index "comments", ["post_type", "post_id"], name: "index_comments_on_post_type_and_post_id"
-  add_index "comments", ["user_id"], name: "index_comments_on_user_id"
+  add_index "comments", ["post_type", "post_id"], name: "index_comments_on_post_type_and_post_id", using: :btree
+  add_index "comments", ["user_id"], name: "index_comments_on_user_id", using: :btree
 
   create_table "flag_statuses", force: :cascade do |t|
     t.string   "result"
@@ -48,7 +51,7 @@ ActiveRecord::Schema.define(version: 20160621174102) do
     t.integer  "flag_id"
   end
 
-  add_index "flag_statuses", ["flag_id"], name: "index_flag_statuses_on_flag_id"
+  add_index "flag_statuses", ["flag_id"], name: "index_flag_statuses_on_flag_id", using: :btree
 
   create_table "flags", force: :cascade do |t|
     t.string   "reason"
@@ -59,8 +62,8 @@ ActiveRecord::Schema.define(version: 20160621174102) do
     t.string   "post_type"
   end
 
-  add_index "flags", ["post_type", "post_id"], name: "index_flags_on_post_type_and_post_id"
-  add_index "flags", ["user_id"], name: "index_flags_on_user_id"
+  add_index "flags", ["post_type", "post_id"], name: "index_flags_on_post_type_and_post_id", using: :btree
+  add_index "flags", ["user_id"], name: "index_flags_on_user_id", using: :btree
 
   create_table "notifications", force: :cascade do |t|
     t.string   "content"
@@ -71,7 +74,7 @@ ActiveRecord::Schema.define(version: 20160621174102) do
     t.integer  "user_id"
   end
 
-  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id"
+  add_index "notifications", ["user_id"], name: "index_notifications_on_user_id", using: :btree
 
   create_table "post_histories", force: :cascade do |t|
     t.integer  "post_history_type_id"
@@ -82,9 +85,9 @@ ActiveRecord::Schema.define(version: 20160621174102) do
     t.string   "post_type"
   end
 
-  add_index "post_histories", ["post_history_type_id"], name: "index_post_histories_on_post_history_type_id"
-  add_index "post_histories", ["post_type", "post_id"], name: "index_post_histories_on_post_type_and_post_id"
-  add_index "post_histories", ["user_id"], name: "index_post_histories_on_user_id"
+  add_index "post_histories", ["post_history_type_id"], name: "index_post_histories_on_post_history_type_id", using: :btree
+  add_index "post_histories", ["post_type", "post_id"], name: "index_post_histories_on_post_type_and_post_id", using: :btree
+  add_index "post_histories", ["user_id"], name: "index_post_histories_on_user_id", using: :btree
 
   create_table "post_history_types", force: :cascade do |t|
     t.string   "name"
@@ -102,15 +105,15 @@ ActiveRecord::Schema.define(version: 20160621174102) do
     t.integer  "threshold"
   end
 
-  add_index "privileges", ["user_id"], name: "index_privileges_on_user_id"
+  add_index "privileges", ["user_id"], name: "index_privileges_on_user_id", using: :btree
 
   create_table "privileges_users", id: false, force: :cascade do |t|
     t.integer "privilege_id", null: false
     t.integer "user_id",      null: false
   end
 
-  add_index "privileges_users", ["privilege_id", "user_id"], name: "index_privileges_users_on_privilege_id_and_user_id"
-  add_index "privileges_users", ["user_id", "privilege_id"], name: "index_privileges_users_on_user_id_and_privilege_id"
+  add_index "privileges_users", ["privilege_id", "user_id"], name: "index_privileges_users_on_privilege_id_and_user_id", using: :btree
+  add_index "privileges_users", ["user_id", "privilege_id"], name: "index_privileges_users_on_user_id_and_privilege_id", using: :btree
 
   create_table "questions", force: :cascade do |t|
     t.string   "title"
@@ -127,7 +130,7 @@ ActiveRecord::Schema.define(version: 20160621174102) do
     t.datetime "closed_at"
   end
 
-  add_index "questions", ["user_id"], name: "index_questions_on_user_id"
+  add_index "questions", ["user_id"], name: "index_questions_on_user_id", using: :btree
 
   create_table "site_settings", force: :cascade do |t|
     t.string   "name"
@@ -167,8 +170,8 @@ ActiveRecord::Schema.define(version: 20160621174102) do
     t.string   "username"
   end
 
-  add_index "users", ["email"], name: "index_users_on_email", unique: true
-  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+  add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
+  add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
   create_table "votes", force: :cascade do |t|
     t.integer  "vote_type"
@@ -180,7 +183,7 @@ ActiveRecord::Schema.define(version: 20160621174102) do
     t.integer  "recv_user"
   end
 
-  add_index "votes", ["post_type", "post_id"], name: "index_votes_on_post_type_and_post_id"
-  add_index "votes", ["user_id"], name: "index_votes_on_user_id"
+  add_index "votes", ["post_type", "post_id"], name: "index_votes_on_post_type_and_post_id", using: :btree
+  add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
 end

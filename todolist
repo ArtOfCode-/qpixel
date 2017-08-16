@@ -1,0 +1,27 @@
+---------------------before launch-------------------------------
+Use action cable to update other areas of the game. like players online
+reseources items ...etc..
+Internationalization
+Globalize
+include the send button for the chat
+---------------------after launch--------------------------------
+Trade products for resources
+Configure SVG Images
+fix on mobile buildings#index padding
+---------------------- SHORTCUTS --------------------------------
+heroku run rails console
+heroku pg:psql per accedere al database produzione
+psql -d SocialNetwork_development per accedere al db
+\dt per mostrare tutte le tabelle
+rake assets:precompile
+rm -rf public/assets
+RAILS_ENV=production bundle exec rake assets:precompile
+lsof -wni tcp:3000
+kill -9 59780
+foreman configuration procfile web: bundle exec rails s
+git rm -r vendor/plugins #delete files from git then commit and push
+heroku run rake db:migrate
+Rails.application.config.assets.paths		
+
+---------------- SHORTCUTS --------------------------------
+psql -d db/development_sprachespiel -U fabrizio

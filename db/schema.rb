@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160621145835) do
+ActiveRecord::Schema.define(version: 20160621174102) do
 
   create_table "answers", force: :cascade do |t|
     t.string   "body"
@@ -117,13 +117,13 @@ ActiveRecord::Schema.define(version: 20160621145835) do
     t.string   "body"
     t.text     "tags"
     t.integer  "score"
-    t.datetime "created_at",                 null: false
-    t.datetime "updated_at",                 null: false
+    t.datetime "created_at",                   null: false
+    t.datetime "updated_at",                   null: false
     t.integer  "user_id"
-    t.boolean  "is_deleted", default: false
+    t.boolean  "is_deleted",   default: false
     t.datetime "deleted_at"
     t.boolean  "is_closed"
-    t.integer  "closed_by"
+    t.integer  "closed_by_id"
     t.datetime "closed_at"
   end
 

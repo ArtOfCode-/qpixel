@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   # We can't have the default Rails welcome page, so let's just have a questions index as the front page.
   root                                  :to => 'questions#index'
 
+  # configuring stripe
+  resources :charges
+
+
   # Admins are important, let's make sure their routes override anything else.
   get    'admin',                       :to => 'admin#index'
   get    'admin/settings',              :to => 'site_settings#index'

@@ -23,5 +23,3 @@ Rails.application.config.assets.paths
 ---------------- DB --------------------------------
 psql -d db/development_sprachespiel -U fabrizio
 rake db:create:all
-
-test

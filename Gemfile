@@ -38,7 +38,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'will_paginate', '~> 3.1.0'
 gem 'rails-html-sanitizer'
-gem 'letsencrypt_plugin'
+#gem 'letsencrypt_plugin'
 
 gem 'whenever', :require => false
 

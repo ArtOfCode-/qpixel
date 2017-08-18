@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Mount the Let's Encrypt plugin for HTTPS support.
-  mount LetsencryptPlugin::Engine, at: '/'
+  #mount LetsencryptPlugin::Engine, at: '/'
 
   # Offload user control onto Devise - doing that once was enough for me.
   devise_for :users, :controllers => { :registrations => 'users/registrations' }

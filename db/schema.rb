@@ -186,4 +186,15 @@ ActiveRecord::Schema.define(version: 20160621174102) do
   add_index "votes", ["post_type", "post_id"], name: "index_votes_on_post_type_and_post_id", using: :btree
   add_index "votes", ["user_id"], name: "index_votes_on_user_id", using: :btree
 
+  add_foreign_key "answers", "questions"
+  add_foreign_key "answers", "users"
+  add_foreign_key "comments", "users"
+  add_foreign_key "flag_statuses", "flags"
+  add_foreign_key "flags", "users"
+  add_foreign_key "notifications", "users"
+  add_foreign_key "post_histories", "post_history_types"
+  add_foreign_key "post_histories", "users"
+  add_foreign_key "privileges", "users"
+  add_foreign_key "questions", "users"
+  add_foreign_key "votes", "users"
 end

@@ -1,9 +1,12 @@
----------------------before launch-------------------------------
-Use action cable to update other areas of the game. like players online
-reseources items ...etc..
-Internationalization
-Globalize
-include the send button for the chat
+need to fix the polyformyc association
+
+error when posting new question
+
+>> check add_user_and_post_to_votes.rb row 6
+
+then you need to follow the instructions from stripe to migrate to heroku
+https://stripe.com/docs/checkout/rails
+
 ---------------------after launch--------------------------------
 Trade products for resources
 Configure SVG Images
@@ -23,5 +26,6 @@ git rm -r vendor/plugins #delete files from git then commit and push
 heroku run rake db:migrate
 Rails.application.config.assets.paths		
 
----------------- SHORTCUTS --------------------------------
+---------------- DB --------------------------------
 psql -d db/development_sprachespiel -U fabrizio
+rake db:create:all

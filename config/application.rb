@@ -26,5 +26,9 @@ module Qpixel
     config.active_record.raise_in_transactional_callbacks = true
 
     config.exceptions_app = self.routes
+
+    config.generators do |g|
+        g.fixture_replacement :factory_girl
+    end
   end
 end

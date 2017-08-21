@@ -51,6 +51,10 @@ gem 'stripe'
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug'
+  gem 'rspec-rails', '~> 3.6', '>= 3.6.1'
+  gem 'factory_girl_rails', '~> 4.8'
+  gem "pry-rails"
+  gem "pry-byebug"
 end
 
 group :development do

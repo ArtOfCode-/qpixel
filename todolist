@@ -1,10 +1,4 @@
-then you need to follow the instructions from stripe to migrate to heroku
-https://stripe.com/docs/checkout/rails
-
----------------------after launch--------------------------------
-Trade products for resources
-Configure SVG Images
-fix on mobile buildings#index padding
+write test using rspec, then migrate to rails 5
 ---------------------- SHORTCUTS --------------------------------
 heroku run rails console
 heroku pg:psql per accedere al database produzione

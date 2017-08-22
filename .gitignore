@@ -33,3 +33,9 @@ coverage/
 coverage/*
 
 public/assets
+
+cutout
+
+todolist
+
+app/assets/javascripts/charges.coffee

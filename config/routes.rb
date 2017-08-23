@@ -33,17 +33,16 @@ Rails.application.routes.draw do
   delete 'mod/users/destroy/:id',       :to => 'users#destroy'
 
   # Questions have a lot of actions...
-  resources :questions
-  # get    'questions',                   :to => 'questions#index'
+  get    'questions',                   :to => 'questions#index'
   get    'questions/feed',              :to => 'questions#feed'
   get    'questions/ask',               :to => 'questions#new'
   post   'questions/ask',               :to => 'questions#create'
   get    'questions/tagged/:tag',       :to => 'questions#tagged'
-  # get    'questions/:id',               :to => 'questions#show'
-  # get    'questions/:id/edit',          :to => 'questions#edit'
-  # post   'questions/:id/edit',          :to => 'questions#update'
-  # patch  'questions/:id/edit',          :to => 'questions#update'
-  # delete 'questions/:id/delete',        :to => 'questions#destroy'
+  get    'questions/:id',               :to => 'questions#show'
+  get    'questions/:id/edit',          :to => 'questions#edit'
+  post   'questions/:id/edit',          :to => 'questions#update'
+  patch  'questions/:id/edit',          :to => 'questions#update'
+  delete 'questions/:id/delete',        :to => 'questions#destroy'
   delete 'questions/:id/undelete',      :to => 'questions#undelete'
   patch  'questions/:id/close',         :to => 'questions#close'
   patch  'questions/:id/reopen',        :to => 'questions#reopen'

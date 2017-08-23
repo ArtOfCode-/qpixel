@@ -64,6 +64,7 @@ class QuestionsController < ApplicationController
   # can't be relied on.
   def update
     return unless check_your_privilege('Edit', @question)
+    # binding.pry
     params[:question][:tags] = params[:question][:tags].split(" ")
     PostHistory.question_edited(@question, current_user)
     if @question.update question_params

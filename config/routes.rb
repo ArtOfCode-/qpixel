@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
   # Mount the Let's Encrypt plugin for HTTPS support.
-  #mount LetsencryptPlugin::Engine, at: '/'
+  # mount LetsencryptPlugin::Engine, at: '/'
 
   # Offload user control onto Devise - doing that once was enough for me.
   devise_for :users, :controllers => { :registrations => 'users/registrations' }
@@ -10,7 +10,6 @@ Rails.application.routes.draw do
 
   # configuring stripe
   resources :charges
-
 
   # Admins are important, let's make sure their routes override anything else.
   get    'admin',                       :to => 'admin#index'
@@ -34,16 +33,17 @@ Rails.application.routes.draw do
   delete 'mod/users/destroy/:id',       :to => 'users#destroy'
 
   # Questions have a lot of actions...
-  get    'questions',                   :to => 'questions#index'
+  resources :questions
+  # get    'questions',                   :to => 'questions#index'
   get    'questions/feed',              :to => 'questions#feed'
   get    'questions/ask',               :to => 'questions#new'
   post   'questions/ask',               :to => 'questions#create'
   get    'questions/tagged/:tag',       :to => 'questions#tagged'
-  get    'questions/:id',               :to => 'questions#show'
-  get    'questions/:id/edit',          :to => 'questions#edit'
-  post   'questions/:id/edit',          :to => 'questions#update'
-  patch  'questions/:id/edit',          :to => 'questions#update'
-  delete 'questions/:id/delete',        :to => 'questions#destroy'
+  # get    'questions/:id',               :to => 'questions#show'
+  # get    'questions/:id/edit',          :to => 'questions#edit'
+  # post   'questions/:id/edit',          :to => 'questions#update'
+  # patch  'questions/:id/edit',          :to => 'questions#update'
+  # delete 'questions/:id/delete',        :to => 'questions#destroy'
   delete 'questions/:id/undelete',      :to => 'questions#undelete'
   patch  'questions/:id/close',         :to => 'questions#close'
   patch  'questions/:id/reopen',        :to => 'questions#reopen'

@@ -16,6 +16,7 @@ class User < ActiveRecord::Base
   # privilege if the user has enough rep. This method should not be used to secure administrator-only privileges, as
   # both admins and mods are assumed to have the privilege.
   def has_privilege?(name)
+    #binding.pry
     privilege = Privilege.where(:name => name).first
     if privileges.include?(privilege) || is_admin || is_moderator
       return true

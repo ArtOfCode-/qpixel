@@ -33,16 +33,22 @@ Rails.application.routes.draw do
   delete 'mod/users/destroy/:id',       :to => 'users#destroy'
 
   # Questions have a lot of actions...
-  get    'questions',                   :to => 'questions#index'
+
+  # All the commented routes from questions and answers are replaced by the following syntax
+  resources :questions do 
+    resources :answers 
+  end
+
+  # get    'questions',                   :to => 'questions#index'
   get    'questions/feed',              :to => 'questions#feed'
   get    'questions/ask',               :to => 'questions#new'
   post   'questions/ask',               :to => 'questions#create'
   get    'questions/tagged/:tag',       :to => 'questions#tagged'
-  get    'questions/:id',               :to => 'questions#show'
-  get    'questions/:id/edit',          :to => 'questions#edit'
-  post   'questions/:id/edit',          :to => 'questions#update'
-  patch  'questions/:id/edit',          :to => 'questions#update'
-  delete 'questions/:id/delete',        :to => 'questions#destroy'
+  # get    'questions/:id',               :to => 'questions#show'
+  # get    'questions/:id/edit',          :to => 'questions#edit'
+  # post   'questions/:id/edit',          :to => 'questions#update'
+  # patch  'questions/:id/edit',          :to => 'questions#update'
+  # delete 'questions/:id/delete',        :to => 'questions#destroy'
   delete 'questions/:id/undelete',      :to => 'questions#undelete'
   patch  'questions/:id/close',         :to => 'questions#close'
   patch  'questions/:id/reopen',        :to => 'questions#reopen'
@@ -62,12 +68,13 @@ Rails.application.routes.draw do
   delete 'votes/:id',                   :to => 'votes#destroy'
 
   # Answers don't have quite as many as questions.
-  get    'questions/:id/answer',        :to => 'answers#new'
-  post   'questions/:id/answer',        :to => 'answers#create'
-  get    'answers/:id/edit',            :to => 'answers#edit'
-  post   'answers/:id/edit',            :to => 'answers#update'
-  patch  'answers/:id/edit',            :to => 'answers#update'
-  delete 'answers/:id/delete',          :to => 'answers#destroy'
+
+  # get    'questions/:id/answer',        :to => 'answers#new'
+  # post   'questions/:id/answer',        :to => 'answers#create'
+  # get    'answers/:id/edit',            :to => 'answers#edit'
+  # post   'answers/:id/edit',            :to => 'answers#update'
+  # patch  'answers/:id/edit',            :to => 'answers#update'
+  # delete 'answers/:id/delete',          :to => 'answers#destroy'
   patch  'answers/:id/delete',          :to => 'answers#undelete'
 
   # Most of the flagging stuff comes under the admin routes, but this one doesn't fit.

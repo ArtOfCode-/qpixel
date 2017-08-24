@@ -188,6 +188,7 @@ GEM
       actionpack (>= 4.0)
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
+    sqlite3 (1.3.11)
     stripe (3.3.0)
       faraday (~> 0.9)
     term-ansicolor (1.3.2)
@@ -235,6 +236,7 @@ DEPENDENCIES
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
   spring
+  sqlite3
   stripe
   turbolinks
   uglifier (>= 1.3.0)

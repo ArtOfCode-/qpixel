@@ -7,7 +7,7 @@ class Question < ActiveRecord::Base
   belongs_to :user
 
   # Can be answered.
-  has_many :answers
+  has_many :answers, :dependent => :destroy
 
   # Can be voted on as a Post.
   has_many :votes, :as => :post

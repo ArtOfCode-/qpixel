@@ -9,7 +9,6 @@ class AnswersController < ApplicationController
   # Authenticated web action. Creates a new answer as a resource for form creation in the view.
   def new
     @answer = Answer.new
-    @question = Question.find params[:question_id]
   end
 
   # Supplies a pre-constructed Markdown renderer for use in rendering Markdown from views.

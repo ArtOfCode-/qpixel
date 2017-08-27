@@ -29,7 +29,7 @@
     <div class="post-tags">
       <a href="/answers/<%= answer.id %>/edit">edit</a> /
       <% if !answer.is_deleted %>
-        <%= link_to "delete", url_for(:controller => :answers, :action => :destroy, :id => answer.id),
+        <%= link_to "delete", url_for(:controller => :answers, :action => :destroy, :question_id => answer.question_id, :id => answer.id),
           :method => :delete, data: { :confirm => 'Are you sure you want to delete this answer?' }, class: "text-danger" %>
       <% else %>
         <%= link_to "undelete", url_for(:controller => :answers, :action => :undelete, :id => answer.id),

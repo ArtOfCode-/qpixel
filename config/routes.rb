@@ -71,7 +71,7 @@ Rails.application.routes.draw do
 
   # get    'questions/:id/answer',        :to => 'answers#new'
   # post   'questions/:id/answer',        :to => 'answers#create'
-  # get    'answers/:id/edit',            :to => 'answers#edit'
+  # get    'answers/:id/edit',            :ngto => 'answers#edit'
   # post   'answers/:id/edit',            :to => 'answers#update'
   # patch  'answers/:id/edit',            :to => 'answers#update'
   # delete 'answers/:id/delete',          :to => 'answers#destroy'

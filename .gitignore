@@ -39,3 +39,9 @@ cutout
 todolist
 
 app/assets/javascripts/charges.coffee
+
+spec/views/answers/edit.html.erb_spec.rb
+spec/views/answers/index.html.erb_spec.rb
+spec/views/answers/new.html.erb_spec.rb
+spec/views/answers/show.html.erb_spec.rb
+

@@ -30,16 +30,20 @@ RSpec.describe AnswersController, type: :controller do
   # adjust the attributes here as well.
   # let(:user) { user = FactoryGirl.create(:user) }
   let(:user) { User.find(answer.user_id) }
-  let(:question) { question = FactoryGirl.create(:question) }
-  let(:answer) { answer = FactoryGirl.create(:answer) }
+  let(:question) { FactoryGirl.create(:question) }
+  let(:answer) { FactoryGirl.create(:answer) }
 
   let(:valid_attributes) {
-    FactoryGirl.build(:answer)
+    build_attributes(:answer)
   }
 
   let(:invalid_attributes) {
-    FactoryGirl.attributes_for(:answer, body: 'too short')
+    build_attributes(:answer, body: 'too short')
   }
+
+  before(:each) do
+    sign_in user
+  end
 
 =begin
   describe "GET #index" do
@@ -59,7 +63,6 @@ RSpec.describe AnswersController, type: :controller do
 
   describe "GET #new" do
     it "returns a success response" do
-      sign_in user
       get :new, question_id: question
       expect(response).to be_success
     end
@@ -67,11 +70,6 @@ RSpec.describe AnswersController, type: :controller do
 
   describe "GET #edit" do
     it "returns a success response" do
-      # you need to sign in a user factory with many answers. but user has many answers through question, 
-      # so the answer factory need to have a question_id and the question need to exist. 
-      # configure the factory and test it through the console
-      # or try to mock this test case so that the answer has the question 
-      sign_in user
       get :edit, question_id: question, :id => answer.to_param
       expect(response).to be_success
     end
@@ -80,22 +78,22 @@ RSpec.describe AnswersController, type: :controller do
   describe "POST #create" do
     context "with valid params" do
       it "creates a new Answer" do
-        binding.pry
         expect {
-          post :create, :question_id => valid_attributes.question_id, :answer => valid_attributes
+          post :create, :question_id => valid_attributes['question_id'], :answer => valid_attributes
         }.to change(Answer, :count).by(1)
       end
 
       it "redirects to the created answer" do
-        post :create, {:answer => valid_attributes}, valid_session
-        expect(response).to redirect_to(Answer.last)
+        post :create, :question_id => valid_attributes['question_id'], :answer => valid_attributes
+        last_answer = Answer.last
+        expect(response).to redirect_to(question_path(last_answer.question))
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'new' template)" do
-        post :create, {:answer => invalid_attributes}, valid_session
-        expect(response).to be_success
+        post :create, :question_id => invalid_attributes['question_id'], :answer => invalid_attributes
+        expect(response.status).to be(422)
       end
     end
   end
@@ -103,24 +101,24 @@ RSpec.describe AnswersController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
+        build_attributes(:answer, body: 'this is the new attribute that I changed')
       }
 
       it "updates the requested answer" do
-        put :update, {:id => answer.to_param, :answer => new_attributes}, valid_session
+        put :update, :question_id => answer.question_id, :id => answer, :answer => new_attributes
         answer.reload
-        skip("Add assertions for updated state")
+        expect(answer.body).to eq('this is the new attribute that I changed')
       end
 
       it "redirects to the answer" do
-        put :update, {:id => answer.to_param, :answer => valid_attributes}, valid_session
-        expect(response).to redirect_to(answer)
+        put :update, :question_id => answer.question_id, :id => answer, :answer => new_attributes
+        expect(response).to redirect_to(question_path(answer.question))
       end
     end
 
     context "with invalid params" do
       it "returns a success response (i.e. to display the 'edit' template)" do
-        put :update, {:id => answer.to_param, :answer => invalid_attributes}, valid_session
+        put :update, :question_id => answer.question_id, :id => answer, :answer => invalid_attributes
         expect(response).to be_success
       end
     end
@@ -129,13 +127,13 @@ RSpec.describe AnswersController, type: :controller do
   describe "DELETE #destroy" do
     it "destroys the requested answer" do
       expect {
-        delete :destroy, {:id => answer.to_param}, valid_session
+        delete :destroy, :question_id => answer.question_id, :id => answer
       }.to change(Answer, :count).by(-1)
     end
 
     it "redirects to the answers list" do
-      delete :destroy, {:id => answer.to_param}, valid_session
-      expect(response).to redirect_to(answers_url)
+      delete :destroy, :question_id => answer.question_id, :id => answer
+      expect(response).to redirect_to(question_url(answer.question))
     end
   end
 

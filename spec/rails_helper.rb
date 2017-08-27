@@ -11,6 +11,7 @@ require 'rspec/rails'
 require 'spec_helper'
 require 'pry-rails'
 require 'devise'
+require_relative './support/other_helpers'
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
 # run as spec files by default. This means that files in spec/support that end
@@ -68,4 +69,6 @@ RSpec.configure do |config|
 
   # Devise Test Helpers
   config.include Devise::TestHelpers, :type => :controller
+
+  config.include Helpers
 end

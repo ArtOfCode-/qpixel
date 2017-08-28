@@ -24,5 +24,14 @@ FactoryGirl.define do
       end
     end
 
+    factory :user_with_privileges do
+      transient do 
+        privileges_count 5
+      end
+      after(:create) do |user, evaluator|
+        create_list(:privilege, evaluator.privileges_count, users: [user])
+      end
+    end
+
   end
 end

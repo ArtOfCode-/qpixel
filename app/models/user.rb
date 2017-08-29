@@ -8,7 +8,7 @@ class User < ActiveRecord::Base
   has_many :questions, :dependent => :destroy 
   has_many :answers
   has_many :votes, :dependent => :destroy
-  has_many :privileges, :dependent => :destroy
+  has_and_belongs_to_many :privileges, :dependent => :destroy
   has_many :notifications, :dependent => :destroy
   has_many :comments, :dependent => :destroy
   has_many :flags, :dependent => :destroy

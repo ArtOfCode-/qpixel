@@ -69,10 +69,13 @@ RSpec.configure do |config|
   end  
 
   # Devise Test Helpers
-  config.include Devise::TestHelpers, :type => :controller
-  #config.include Devise::TestHelpers, :type => :request
-
+  # For Devise >= 4.1.0
+  config.include Devise::Test::ControllerHelpers, :type => :controller
+  config.include Devise::Test::ControllerHelpers, :type => :request
+  
+  # Use the following instead if you are on Devise <= 4.1.1
+  # config.include Devise::TestHelpers, :type => :controller
+  # config.include Devise::TestHelpers, :type => :request
   config.include Helpers
   config.include DeviseRequestSpecHelpers, :type => :request
-
 end

@@ -5,6 +5,7 @@ RSpec.describe "Answers", type: :request do
 	let(:question) { FactoryGirl.create(:question) }
 	let(:answer) { FactoryGirl.create(:answer) }
 
+=begin
 	describe "GET /edit" do
 		it "the page edit is displayed after authentication" do
 			sign_in user
@@ -12,4 +13,5 @@ RSpec.describe "Answers", type: :request do
 	  		expect(response).to have_http_status(200)
 		end
 	end
+=end	
 end

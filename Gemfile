@@ -20,8 +20,13 @@ gem 'redcarpet'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
+
 # Turbolinks makes following links in your web application faster. Read more: https://github.com/rails/turbolinks
 gem 'turbolinks'
+
+# Turbolinks makes navigating your web application faster. Read more: https://github.com/turbolinks/turbolinks
+# gem 'turbolinks', '~> 5'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.0'
 # bundle exec rake doc:rails generates the API under doc/api.
@@ -57,6 +62,7 @@ group :development, :test do
   gem "pry-rails"
   gem "pry-byebug"
   gem 'faker'
+  gem 'rspec-stripe'
 end
 
 group :development do

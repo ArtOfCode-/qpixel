@@ -60,3 +60,14 @@ end
 default_post_history_types.each do |name, description, action_name|
   PostHistoryType.create(name: name, description: description, action_name: action_name)
 end
+
+question_titles = [ 'Ruby on Rails files in asset pipeline not working', 'Ruby on Rails jquery files are not loaded', 'Jquery-ui Effect not working with ROR', 'strong_params not working', 'GEM Devise facebook-omniauth not working', 'image not loading', 'Carrierwave FOG now uploading images' ]
+question_text = 'Some random text for a question asked from one of our users, should be answered by somebody else or from a mentor'
+
+6.times do 
+  User.create(username: Faker::Internet.user_name, email: Faker::Internet.email, reputation: Faker::Number.number(2), password: Faker::Internet.password(10))
+end
+
+question_titles.each do |title|
+  Question.create(title: title, body: question_text, tags: ['ruby-on-rails'], score: Faker::Number.number(3), user_id: User.order("RANDOM()").first.id )
+end

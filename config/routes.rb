@@ -41,8 +41,8 @@ Rails.application.routes.draw do
 
   # get    'questions',                   :to => 'questions#index'
   get    'questions/feed',              :to => 'questions#feed'
-  get    'questions/ask',               :to => 'questions#new'
-  post   'questions/ask',               :to => 'questions#create'
+  # get    'questions/ask',               :to => 'questions#new'
+  # post   'questions/ask',               :to => 'questions#create'
   get    'questions/tagged/:tag',       :to => 'questions#tagged'
   # get    'questions/:id',               :to => 'questions#show'
   # get    'questions/:id/edit',          :to => 'questions#edit'

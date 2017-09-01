@@ -8,6 +8,6 @@ RSpec.describe ChargesController, type: :controller do
 		end
 	end
 
-	describe 'POST #create' do
-		it ''
+	#describe 'POST #create' do
+		#it ''
 end

@@ -12,7 +12,7 @@
 # the additional setup, and require it from the spec files that actually need
 # it.
 #
-# See http://rubydoc.info/gems/rspec-core/RSpec/Core/Configuration
+# See http://rubydoc.info/gems/RSpecStripe.configure do |config|
 
 require 'rspec-stripe'
 
@@ -96,7 +96,8 @@ RSpec.configure do |config|
   # as the one that triggered the failure.
   Kernel.srand config.seed
 =end
+end
 
-  # Rspec Stripe Gem
-  config.configure_rspec_metadata!  
+RSpecStripe.configure do |config|
+  config.configure_rspec_metadata!
 end

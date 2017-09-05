@@ -16,7 +16,8 @@
     <div class="container">
       <div class="site-logo">
         <% if get_setting('SiteLogoPath') %>
-          <a href="/"><img src="<%= get_setting('SiteLogoPath') %>" /></a>
+          <a href="/"><h1 style='color:white;'>RailsMentor</h1></a>
+          <!--img src="<%= get_setting('SiteLogoPath') %>" /-->
         <% else %>
           <a href="/"><%= get_setting('SiteName') %></a>
         <% end %>
@@ -52,6 +53,7 @@
         <% if user_is_mod %>
           <a class="toplevel" href="/mod">Moderator</a>
         <% end %>
+        <a class="toplevel" href="/price">Price</a>
         <a class="toplevel" href="/questions">Questions</a>
         <a class="toplevel" href="/users?sort=reputation">Users</a>
         <a class="toplevel" href="/questions/new">Ask!</a>

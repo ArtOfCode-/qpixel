@@ -41,3 +41,61 @@
 .module-66 {
   width: 66%;
 }
+
+.hero-unit {
+    padding: 60px;
+    margin-bottom: 30px;
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    color: inherit;
+    background-color: #eeeeee;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+}
+
+.price-unit {
+
+}
+
+.price-left-unit {
+  background-color: rgb(41, 178, 254);
+  border-radius: 6px 0px 0px 0px;
+}
+
+.price-central-unit {
+  webkit-border-radius: initial;
+  border-radius: initial;
+  background-color: rgb(32, 157, 225);
+  border-left: 1px solid #ecf3f6;
+  border-right: 1px solid #ecf3f6;
+}
+
+.price-right-unit {
+  background-color: rgb(11, 123, 186);
+  border-radius: 0px 6px 0px 0px;
+}
+
+h1 {
+    margin: 10px 0;
+    font-family: inherit;
+    font-weight: bold;
+    line-height: 40px;
+    color: inherit;
+    text-rendering: optimizelegibility;
+}
+
+.row {
+  margin: initial;
+}
+
+.col-sm-4 { 
+  text-align: center;
+  margin: auto;
+  width: 33%;
+}
+
+.col-sm-4 h2 {
+  color: white;
+}

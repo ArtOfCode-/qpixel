@@ -4,6 +4,10 @@ class UsersController < ApplicationController
   before_action :verify_moderator, :only => [:mod, :destroy, :soft_delete]
   before_action :set_user, :only => [:mod, :destroy, :soft_delete]
 
+  def welcome 
+    
+  end
+
   # Web action. Retrieves a paginated list of all users.
   def index
     @users = User.all.paginate(:page => params[:page], :per_page => 50).order(params[:sort])

@@ -44,7 +44,7 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'devise'
 gem 'will_paginate', '~> 3.1.0'
 gem 'rails-html-sanitizer'
-#gem 'letsencrypt_plugin'
+gem 'letsencrypt_plugin'
 
 gem 'whenever', :require => false
 
@@ -72,3 +72,6 @@ group :development do
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
 end
+
+gem 'bootstrap-sass', '~> 3.3', '>= 3.3.7'
+gem 'font-awesome-rails', '~> 4.7', '>= 4.7.0.2'

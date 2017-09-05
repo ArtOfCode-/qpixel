@@ -6,7 +6,8 @@ Rails.application.routes.draw do
   devise_for :users, :controllers => { :registrations => 'users/registrations' }
 
   # We can't have the default Rails welcome page, so let's just have a questions index as the front page.
-  root                                  :to => 'questions#index'
+  root                                  :to => 'users#welcome'
+  # get '/', :to => redirect('/welcome.html')
 
   # configuring stripe
   resources :charges

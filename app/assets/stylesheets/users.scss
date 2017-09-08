@@ -77,6 +77,8 @@
   border-radius: 0px 35px 0px 0px;
 }
 
+/* Custom Fonts */
+
 h1 {
     margin: 10px 0;
     font-family: inherit;
@@ -86,6 +88,16 @@ h1 {
     text-rendering: optimizelegibility;
 }
 
+.descriptions h3 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);  
+}
+
+/* Bootstrap Classes */
+
 .row {
   margin: initial;
 }
@@ -93,7 +105,6 @@ h1 {
 .col-sm-4 { 
   text-align: center;
   margin: auto;
-  /*width: 33%;*/
 }
 
 .col-sm-4.hero-unit {
@@ -103,6 +114,8 @@ h1 {
 .col-sm-4 h2 {
   color: white;
 }
+
+/* Other Classes */
 
 .membership-price {
   margin-top: 0px;
@@ -115,14 +128,33 @@ h1 {
   margin-right: 1px;
 }
 
-.col-sm-4-hover-effect {
+/* Javascript Effects Classes*/
+
+.prices-col-effect {
   background-color: red;
 }
 
-.h2-hover-effect {
+.prices-h2-effect {
   color: yellow;
   font-size: 60px;
   position: relative;
   top: 50%;
   transform: translateY(-50%);
+}
+
+.descriptions-col-effect {
+  background-color: red;
+}
+
+.descriptions-h2-effect {
+  color: yellow;
+  font-size: 60px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.descriptions .col-sm-4.hero-unit {
+    border-right: white solid 1px;
+    border-radius: initial;
 }

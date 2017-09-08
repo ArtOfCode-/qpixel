@@ -18,15 +18,23 @@ function message() {
 };
 
 function hoverInEffect (div) {
-	$(div).css( "background-color", 'red' );
-	h2 = $(div).children();
-	h2.addClass('h2-hover-effect');
+  className = $(div).parent()[0].className
+  switch (className) {
+    case 'row prices':
+      $(div).addClass('prices-col-effect');
+      h2 = $(div).children();
+      h2.addClass('prices-h2-effect');
+      break;
+    case 'row descriptions':
+      break
+    default: 
+  }
 }; 
 
 function hoverOutEffect(div) {
-	$(div).css( "background-color", '#29b2fe' );
+	$(div).removeClass('prices-col-effect');
   h2 = $(div).children();
-  h2.removeClass('h2-hover-effect');
+  h2.removeClass('prices-h2-effect');
 }
 
 $(document).on('turbolinks:load', ready);

@@ -61,7 +61,7 @@
 
 .price-left-unit {
   background-color: rgb(41, 178, 254);
-  border-radius: 6px 0px 0px 0px;
+  border-radius: 35px 0px 0px 0px;
 }
 
 .price-central-unit {
@@ -74,7 +74,7 @@
 
 .price-right-unit {
   background-color: rgb(11, 123, 186);
-  border-radius: 0px 6px 0px 0px;
+  border-radius: 0px 35px 0px 0px;
 }
 
 h1 {
@@ -93,7 +93,11 @@ h1 {
 .col-sm-4 { 
   text-align: center;
   margin: auto;
-  width: 33%;
+  /*width: 33%;*/
+}
+
+.col-sm-4.hero-unit {
+  height: 150px;
 }
 
 .col-sm-4 h2 {
@@ -109,4 +113,16 @@ h1 {
   font-size: 19px;
   vertical-align: 6px;
   margin-right: 1px;
+}
+
+.col-sm-4-hover-effect {
+  background-color: red;
+}
+
+.h2-hover-effect {
+  color: yellow;
+  font-size: 60px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
 }

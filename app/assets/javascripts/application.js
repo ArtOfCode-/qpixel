@@ -14,7 +14,21 @@
 //= require jquery_ujs
 //= require bootstrap-sprockets
 //= require turbolinks
-//= require_tree .
+//= require admin
+//= require answers
+//= require charges
+//= require comments
+//= require errors
+//= require flags
+//= require livestamp.min
+//= require moderator
+//= require notifications
+//= require questions
+//= require site_settings
+//= require suspicious_votes
+//= require users
+//= require user
+//= require votes
 
 var QPixel = {
   createNotification: function(type, message, relativeElement) {

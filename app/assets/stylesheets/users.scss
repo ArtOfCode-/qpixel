@@ -42,9 +42,9 @@
   width: 66%;
 }
 
+/* root page users#welcome */
+
 .hero-unit {
-    padding: 60px;
-    margin-bottom: 30px;
     font-size: 18px;
     font-weight: 200;
     line-height: 30px;
@@ -53,10 +53,30 @@
     -webkit-border-radius: 6px;
     -moz-border-radius: 6px;
     border-radius: 6px;
+    padding: 10px 20px;
+    margin-bottom: 30px;
 }
 
-.price-unit {
+.price {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
 
+.prices .hero-unit h2 {
+    /*position: relative;
+    top: 50%;
+    transform: translateY(-50%);*/
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.prices .hero-unit p {
+    /*position: relative;
+    top: 0%;
+    transform: translateY(-50%);*/
+    margin-top: 0px;
+    margin-bottom: 0px  ;
 }
 
 .price-left-unit {
@@ -116,11 +136,12 @@ h1 {
 }
 
 /* Other Classes */
-
+/*
 .membership-price {
   margin-top: 0px;
   margin-bottom: 0px;
 }
+*/
 
 .currency {
   font-size: 19px;
@@ -137,11 +158,12 @@ h1 {
 .prices-h2-effect {
   color: yellow;
   font-size: 60px;
-  position: relative;
+  /*position: relative;
   top: 50%;
-  transform: translateY(-50%);
+  transform: translateY(-50%);*/ 
 }
 
+/*
 .descriptions-col-effect {
   background-color: red;
 }
@@ -153,6 +175,7 @@ h1 {
   top: 50%;
   transform: translateY(-50%);
 }
+*/
 
 .descriptions .col-sm-4.hero-unit {
     border-right: white solid 1px;

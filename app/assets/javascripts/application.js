@@ -29,6 +29,7 @@
 //= require users
 //= require user
 //= require votes
+//= require main
 
 var QPixel = {
   createNotification: function(type, message, relativeElement) {

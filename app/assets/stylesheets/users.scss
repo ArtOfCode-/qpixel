@@ -128,11 +128,21 @@ h1 {
 }
 
 .col-sm-4.hero-unit {
-  height: 150px;
+  height: 100px;
 }
 
 .col-sm-4 h2 {
   color: white;
+}
+
+.btn-wide {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.btn-wide:hover {
+  background-color: red;
+  color: yellow;
 }
 
 /* Other Classes */

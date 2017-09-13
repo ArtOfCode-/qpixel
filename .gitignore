@@ -32,8 +32,6 @@ config/letsencrypt_plugin.yml
 coverage/
 coverage/*
 
-public/assets
-
 cutout
 
 todolist

@@ -64,7 +64,9 @@ var QPixel = {
   }
 };
 
-$(document).on('ready page:load', function() {
+/* Compatible with turbolinks, event changed from ready page:load to */
+
+$(document).on('turbolinks:load', function() {
 
   $(".vote-button").bind("click", function(ev) {
     ev.preventDefault();

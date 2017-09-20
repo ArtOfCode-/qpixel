@@ -20,7 +20,7 @@ function hoverInEffect (div) {
   switch (className) {
     case 'row prices':
       $(div).addClass('prices-col-effect');
-      $number = $(div).find('.number');
+      var $number = $(div).find('.number');
       $number.addClass('prices-h2-effect');
       break;
     case 'row descriptions':
@@ -31,7 +31,7 @@ function hoverInEffect (div) {
 
 function hoverOutEffect(div) {
 	$(div).removeClass('prices-col-effect');
-  $number = $(div).find('.number')
+  var $number = $(div).find('.number')
   $number.removeClass('prices-h2-effect');
 }
 

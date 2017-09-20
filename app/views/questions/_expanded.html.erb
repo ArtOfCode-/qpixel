@@ -20,7 +20,7 @@
         <!--img class="vote-button" data-vote="-1/<%= question.id %>/q/<%= my_vote(question).id %>"
              id="question-<%= question.id %>-down" src="/assets/down-fill.png" height="48" /-->
       <% else %>
-        <%= image_tag 'down-clear.png', :class => 'vote-button', :id => "#{question.id}", :height => '48', :data => { :vote => "-1/#{question.id}/q/-1" } %>      
+        <%= image_tag 'down-clear.png', :class => 'vote-button', :id => "question-#{question.id}-down", :height => '48', :data => { :vote => "-1/#{question.id}/q/-1" } %>      
         <!--img class="vote-button" data-vote="-1/<%= question.id %>/q/-1"
            id="question-<%= question.id %>-down" src="/assets/down-clear.png" height="48" /-->
       <% end %>

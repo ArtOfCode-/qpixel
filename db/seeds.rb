@@ -69,5 +69,5 @@ question_text = 'Some random text for a question asked from one of our users, sh
 end
 
 question_titles.each do |title|
-  Question.create(title: title, body: question_text, tags: ['ruby-on-rails'], score: Faker::Number.number(3), user_id: User.order("RANDOM()").first.id )
+  Question.create(title: title, body: question_text, tags: ['ruby-on-rails'], score: 0, user_id: User.order("RANDOM()").first.id )
 end

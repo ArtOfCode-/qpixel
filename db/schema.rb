@@ -100,9 +100,12 @@ ActiveRecord::Schema.define(version: 20170829054212) do
   create_table "privileges", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer  "user_id"
     t.string   "name"
     t.integer  "threshold"
   end
+
+  add_index "privileges", ["user_id"], name: "index_privileges_on_user_id", using: :btree
 
   create_table "privileges_users", id: false, force: :cascade do |t|
     t.integer "privilege_id"
@@ -191,6 +194,7 @@ ActiveRecord::Schema.define(version: 20170829054212) do
   add_foreign_key "notifications", "users"
   add_foreign_key "post_histories", "post_history_types"
   add_foreign_key "post_histories", "users"
+  add_foreign_key "privileges", "users"
   add_foreign_key "questions", "users"
   add_foreign_key "votes", "users"
 end

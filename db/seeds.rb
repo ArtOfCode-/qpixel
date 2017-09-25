@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 default_settings = [
-  [ 'SiteName', 'QPixel' ],
+  [ 'SiteName', 'RailsMentor' ],
   [ 'SiteLogoPath', '/assets/logo.png' ],
   [ 'QuestionUpVoteRep', '5' ],
   [ 'QuestionDownVoteRep', '-2' ],

@@ -2,10 +2,12 @@
   <div class="vote-box">
     <p>
       <% if my_vote(answer) && my_vote(answer).vote_type == 1 %>
-        <img class="vote-button" data-vote="1/<%= answer.id %>/a/<%= my_vote(answer).id %>"
-             id="answer-<%= answer.id %>-up" src="/assets/up-fill.png" height="48" />
+        <%= image_tag 'up-fill.png', :class => 'vote-button', :id => "answer-#{answer.id}-up", :height => '48', :data => { :vote => '1/#{answer.id}/a/#{my_vote(answer)}.id' } %>      
+        <!--img class="vote-button" data-vote="1/<%= answer.id %>/a/<%= my_vote(answer).id %>"
+             id="answer-<%= answer.id %>-up" src="/assets/up-fill.png" height="48" /-->
       <% else %>
-        <img class="vote-button" data-vote="1/<%= answer.id %>/a/-1" id="answer-<%= answer.id %>-up" src="/assets/up-clear.png" height="48" />
+        <%= image_tag 'up-fill.png', :class => 'vote-button', :id => "answer-#{answer.id}-up", :height => '48', :data => { :vote => '1/#{answer.id}/a/-1' } %>      
+        <!--img class="vote-button" data-vote="1/<%= answer.id %>/a/-1" id="answer-<%= answer.id %>-up" src="/assets/up-clear.png" height="48" /-->
       <% end %>
     </p>
     <% @upvotes = answer.votes.where(:vote_type => 1).count %>
@@ -13,10 +15,12 @@
     <p class="post-score large-text center" title="+<%= @upvotes %>/-<%= @downvotes %>"><%= answer.score %></p>
     <p>
       <% if my_vote(answer) && my_vote(answer).vote_type == -1 %>
-        <img class="vote-button" data-vote="-1/<%= answer.id %>/a/<%= my_vote(answer).id %>"
-             id="answer-<%= answer.id %>-down" src="/assets/down-fill.png" height="48" />
+        <%= image_tag 'down-fill.png', :class => 'vote-button', :id => "answer-#{answer.id}-down", :height => '48', :data => { :vote => '-1/#{answer.id}/a/#{my_vote(answer)}.id' } %>      
+        <!--img class="vote-button" data-vote="-1/<%= answer.id %>/a/<%= my_vote(answer).id %>"
+             id="answer-<%= answer.id %>-down" src="/assets/down-fill.png" height="48" /-->
       <% else %>
-        <img class="vote-button" data-vote="-1/<%= answer.id %>/a/-1" id="answer-<%= answer.id %>-down" src="/assets/down-clear.png" height="48" />
+        <%= image_tag 'down-clear.png', :class => 'vote-button', :id => "answer-#{answer.id}-down", :height => '48', :data => { :vote => '1/#{answer.id}/a/-1' } %>      
+        <!--img class="vote-button" data-vote="-1/<%= answer.id %>/a/-1" id="answer-<%= answer.id %>-down" src="/assets/down-clear.png" height="48" /-->
       <% end %>
     </p>
   </div>
@@ -29,7 +33,7 @@
     <div class="post-tags">
       <a href="/answers/<%= answer.id %>/edit">edit</a> /
       <% if !answer.is_deleted %>
-        <%= link_to "delete", url_for(:controller => :answers, :action => :destroy, :id => answer.id),
+        <%= link_to "delete", url_for(:controller => :answers, :action => :destroy, :question_id => answer.question_id, :id => answer.id),
           :method => :delete, data: { :confirm => 'Are you sure you want to delete this answer?' }, class: "text-danger" %>
       <% else %>
         <%= link_to "undelete", url_for(:controller => :answers, :action => :undelete, :id => answer.id),

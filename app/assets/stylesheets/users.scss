@@ -41,3 +41,153 @@
 .module-66 {
   width: 66%;
 }
+
+/* root page users#welcome */
+
+.hero-unit {
+    font-size: 18px;
+    font-weight: 200;
+    line-height: 30px;
+    color: inherit;
+    background-color: #eeeeee;
+    -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    padding: 10px 20px;
+    margin-bottom: 30px;
+}
+
+.price {
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.prices .hero-unit h2 {
+    /*position: relative;
+    top: 50%;
+    transform: translateY(-50%);*/
+    margin-top: 0px;
+    margin-bottom: 0px;
+}
+
+.prices .hero-unit p {
+    /*position: relative;
+    top: 0%;
+    transform: translateY(-50%);*/
+    margin-top: 0px;
+    margin-bottom: 0px  ;
+}
+
+.price-left-unit {
+  background-color: rgb(41, 178, 254);
+  border-radius: 35px 0px 0px 0px;
+}
+
+.price-central-unit {
+  webkit-border-radius: initial;
+  border-radius: initial;
+  background-color: rgb(32, 157, 225);
+  border-left: 1px solid #ecf3f6;
+  border-right: 1px solid #ecf3f6;
+}
+
+.price-right-unit {
+  background-color: rgb(11, 123, 186);
+  border-radius: 0px 35px 0px 0px;
+}
+
+/* Custom Fonts */
+
+h1 {
+    margin: 10px 0;
+    font-family: inherit;
+    font-weight: bold;
+    line-height: 40px;
+    color: inherit;
+    text-rendering: optimizelegibility;
+}
+
+.descriptions h3 {
+  margin-top: 0px;
+  margin-bottom: 0px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);  
+}
+
+/* Bootstrap Classes */
+
+.row {
+  margin: initial;
+}
+
+.col-sm-4 { 
+  text-align: center;
+  margin: auto;
+}
+
+.col-sm-4.hero-unit {
+  height: 100px;
+}
+
+.col-sm-4 h2 {
+  color: white;
+}
+
+.btn-wide {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+.btn-wide:hover {
+  background-color: red;
+  color: yellow;
+}
+
+/* Other Classes */
+/*
+.membership-price {
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+*/
+
+.currency {
+  font-size: 19px;
+  vertical-align: 6px;
+  margin-right: 1px;
+}
+
+/* Javascript Effects Classes*/
+
+.prices-col-effect {
+  background-color: red;
+}
+
+.prices-h2-effect {
+  color: yellow;
+  font-size: 60px;
+  /*position: relative;
+  top: 50%;
+  transform: translateY(-50%);*/ 
+}
+
+/*
+.descriptions-col-effect {
+  background-color: red;
+}
+
+.descriptions-h2-effect {
+  color: yellow;
+  font-size: 60px;
+  position: relative;
+  top: 50%;
+  transform: translateY(-50%);
+}
+*/
+
+.descriptions .col-sm-4.hero-unit {
+    border-right: white solid 1px;
+    border-radius: initial;
+}

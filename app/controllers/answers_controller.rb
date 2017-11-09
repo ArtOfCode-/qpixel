@@ -3,12 +3,12 @@
 class AnswersController < ApplicationController
   before_action :authenticate_user!, :only => [:new, :create, :edit, :update, :destroy, :undelete]
   before_action :set_answer, :only => [:edit, :update, :destroy, :undelete]
+  before_action :set_question, :only => [:index, :create, :new, :edit, :show, :update, :destroy]
   @@markdown_renderer = Redcarpet::Markdown.new(Redcarpet::Render::HTML.new(), extensions = {})
 
   # Authenticated web action. Creates a new answer as a resource for form creation in the view.
   def new
     @answer = Answer.new
-    @question = Question.find params[:id]
   end
 
   # Supplies a pre-constructed Markdown renderer for use in rendering Markdown from views.
@@ -20,13 +20,12 @@ class AnswersController < ApplicationController
   # that the route to this action contains the question id, and uses that to assign the answer to a question.
   def create
     @answer = Answer.new answer_params
-    @question = Question.find params[:id]
     @answer.question = @question
     @answer.user = current_user
     @answer.score = 0
     @question.user.create_notification("New answer to your question '#{@question.title.truncate(50)}'", "/questions/#{@question.id}")
     if @answer.save
-      redirect_to url_for(:controller => :questions, :action => :show, :id => params[:id]) and return
+      redirect_to url_for(:controller => :questions, :action => :show, :id => @question.id) and return
     else
       render :new, :status => 422
     end
@@ -87,6 +86,10 @@ class AnswersController < ApplicationController
 
     def set_answer
       @answer = Answer.unscoped.find params[:id]
+    end
+
+    def set_question
+      @question = Question.find params[:question_id]
     end
 
     # Calculates and changes any reputation changes a user has had from a post. If <tt>direction</tt> is 1, we add the

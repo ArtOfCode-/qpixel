@@ -15,5 +15,5 @@
 <% end %>
 
 <% unless @question.is_closed %>
-  <a href="/questions/<%= @question.id %>/answer" class="btn btn-primary">Answer this Question</a>
+	<%= link_to "Answer this Question", new_question_answer_path(@question), class: "btn btn-primary" %>
 <% end %>

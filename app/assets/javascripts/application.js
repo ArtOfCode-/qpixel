@@ -12,8 +12,24 @@
 //
 //= require jquery
 //= require jquery_ujs
+//= require bootstrap-sprockets
 //= require turbolinks
-//= require_tree .
+//= require admin
+//= require answers
+//= require charges
+//= require comments
+//= require errors
+//= require flags
+//= require livestamp.min
+//= require moderator
+//= require notifications
+//= require questions
+//= require site_settings
+//= require suspicious_votes
+//= require users
+//= require user
+//= require votes
+//= require main
 
 var QPixel = {
   createNotification: function(type, message, relativeElement) {
@@ -48,7 +64,9 @@ var QPixel = {
   }
 };
 
-$(document).on('ready page:load', function() {
+/* Compatible with turbolinks, event changed from ready page:load to */
+
+$(document).on('turbolinks:load', function() {
 
   $(".vote-button").bind("click", function(ev) {
     ev.preventDefault();

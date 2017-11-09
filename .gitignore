@@ -31,3 +31,12 @@ config/letsencrypt_plugin.yml
 
 coverage/
 coverage/*
+
+cutout
+
+todolist
+
+spec/views/answers/edit.html.erb_spec.rb
+spec/views/answers/index.html.erb_spec.rb
+spec/views/answers/new.html.erb_spec.rb
+spec/views/answers/show.html.erb_spec.rb

@@ -2,10 +2,10 @@
 <html>
 <head>
   <title><%= get_setting('SiteName') %> - <%= yield(:title) %></title>
-  <%= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" %>
+  <%#= stylesheet_link_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" %>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag "https://code.jquery.com/jquery-2.2.2.min.js" %>
-  <%= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" %>
+  <%#= javascript_include_tag "https://code.jquery.com/jquery-2.2.2.min.js" %>
+  <%#= javascript_include_tag "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js" %>
   <%= javascript_include_tag "https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.13.0/moment.min.js" %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
@@ -16,7 +16,8 @@
     <div class="container">
       <div class="site-logo">
         <% if get_setting('SiteLogoPath') %>
-          <a href="/"><img src="<%= get_setting('SiteLogoPath') %>" /></a>
+          <a href="/"><h1 style='color:white;'>RailsMentor</h1></a>
+          <!--img src="<%= get_setting('SiteLogoPath') %>" /-->
         <% else %>
           <a href="/"><%= get_setting('SiteName') %></a>
         <% end %>
@@ -52,9 +53,10 @@
         <% if user_is_mod %>
           <a class="toplevel" href="/mod">Moderator</a>
         <% end %>
+        <a class="toplevel" href="/" id='price'>Price</a>
         <a class="toplevel" href="/questions">Questions</a>
         <a class="toplevel" href="/users?sort=reputation">Users</a>
-        <a class="toplevel" href="/questions/ask">Ask!</a>
+        <a class="toplevel" href="/questions/new">Ask!</a>
       </div>
     </div>
     <span class="clearfix"></span>

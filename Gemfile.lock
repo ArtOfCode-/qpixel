@@ -286,7 +286,7 @@ GEM
     tilt (2.0.10)
     tins (1.26.0)
       sync
-    tzinfo (1.2.8)
+    tzinfo (1.2.10)
       thread_safe (~> 0.1)
     tzinfo-data (1.2019.3)
       tzinfo (>= 1.0.0)

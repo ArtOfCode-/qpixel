@@ -19,7 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 
 # Sign in
 gem 'devise', '~> 4.7'
-gem 'omniauth', '~> 1.9'
+gem 'omniauth', '~> 2.0'
 
 # Markdown support in both directions.
 gem 'commonmarker', '~> 0.21'
